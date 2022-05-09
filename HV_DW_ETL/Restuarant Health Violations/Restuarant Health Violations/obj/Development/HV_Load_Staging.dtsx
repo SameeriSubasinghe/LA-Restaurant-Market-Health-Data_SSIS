@@ -1,0 +1,2262 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/9/2022 12:09:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-QJ3GV6A"
+  DTS:CreatorName="DESKTOP-QJ3GV6A\User"
+  DTS:DTSID="{987C65C4-348E-4DE8-95B9-1EEC111A625C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.170"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="HV_Load_Staging"
+  DTS:PackageType="5"
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{3A77E72C-8E19-4133-A5AE-EBA450302F03}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_SourceDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{05011761-0C21-484C-8571-3188851DD1F6}"
+      DTS:ObjectName="DESKTOP-QJ3GV6A.HV_SourceDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-QJ3GV6A;Initial Catalog=HV_SourceDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B16033BE-AE02-4C0E-99E6-CAB7D0EA1098}"
+      DTS:ObjectName="DESKTOP-QJ3GV6A.HV_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-QJ3GV6A;Initial Catalog=HV_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{B6FF0F0E-7204-46CF-AF7C-AB80CD2ADDE0}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\DWBI ASSIGNMENT 1\DataSources\Owner.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{CEBB061C-44F1-4AF8-96C7-9567AD877A9B}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\DWBI ASSIGNMENT 1\DataSources\Owner.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OwnerID"
+              DTS:DTSID="{1B7086BF-29E6-46EA-8BE1-8743EC9BB4B2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OwnerName"
+              DTS:DTSID="{7469C3A1-0CB8-411D-84AE-32C7EF7AC36E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OwnerPhoneNumber"
+              DTS:DTSID="{A23E4E9F-3743-49BD-A130-90BA3ED51551}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OwnerEmail"
+              DTS:DTSID="{0435ADDB-A13D-40C3-8F4E-5A4A40BC36B9}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{6DCF20CE-849E-494B-89CC-6A32A55AA67F}"
+      DTS:ObjectName="Flat File Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="D:\DWBI ASSIGNMENT 1\DataSources\Facility.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="facility_id"
+              DTS:DTSID="{F7267040-B769-48C0-A61A-1819A8E651F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="facility_name"
+              DTS:DTSID="{E5B3B31F-31AE-4E22-9961-E6464B50655E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="facility_city"
+              DTS:DTSID="{5F5B8E6A-1DBD-4D69-90EE-D1D236F1B448}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="200"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="facility_address"
+              DTS:DTSID="{84B3F145-01D0-495C-AACC-D3BD69AC32E2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OwnerID"
+              DTS:DTSID="{BE23553D-0CCC-4B63-9976-D27CC0C4D821}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 2]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{DFBE3137-0F64-417C-9899-E290255ED316}"
+      DTS:ObjectName="Flat File Connection Manager 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\DWBI ASSIGNMENT 1\DataSources\Ratings.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RatingID"
+              DTS:DTSID="{453FBC13-1E6E-4284-8109-84CB27717C57}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="facility_id"
+              DTS:DTSID="{3A31CCA3-5817-42F0-B5FC-4A6AD8A60DC5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OwnerID"
+              DTS:DTSID="{4BD56F33-874B-49B6-8700-8AB913B9A49A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="135"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ActivityDate"
+              DTS:DTSID="{B25286DB-189C-49B3-AA33-835F5E98203C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Fine"
+              DTS:DTSID="{120B74EC-05F0-43E5-858D-76A8F622B431}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="131"
+              DTS:DataPrecision="18"
+              DTS:TextQualified="True"
+              DTS:ObjectName="score"
+              DTS:DTSID="{D3958AB1-D93A-4561-908B-7516E0A22B00}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Extract Facility Data to Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C3BB80B2-9DF9-4EF9-9DC0-FCF0BBE9AF32}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract Facility Data to Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\Extract Facility Data to Staging.EventHandlers[OnPreExecute]"
+          DTS:CreationName="OnPreExecute"
+          DTS:DTSID="{1EA2F3F9-FA60-482F-A664-5D73E294D634}"
+          DTS:EventID="6881394"
+          DTS:EventName="OnPreExecute"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{A219D14D-62D2-4306-B702-B263CBEC4B7E}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Extract Facility Data to Staging.EventHandlers[OnPreExecute]\Truncate Facility Staging Table"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{DF8344C8-E900-46CF-BE46-824DDFF23B3B}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Truncate Facility Staging Table"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{B16033BE-AE02-4C0E-99E6-CAB7D0EA1098}"
+                  SQLTask:SqlStatementSource="truncate table dbo.stgFacility" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract Facility Data to Staging\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Facility Data to Staging\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 1]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[facility_id]"
+                      length="50"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_id]"
+                      name="facility_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[facility_name]"
+                      length="200"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_name]"
+                      name="facility_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[facility_city]"
+                      length="50"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_city]"
+                      name="facility_city"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[facility_address]"
+                      length="200"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_address]"
+                      name="facility_address"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerID]"
+                      length="50"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerID]"
+                      name="OwnerID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[facility_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[facility_name]"
+                      dataType="wstr"
+                      length="200"
+                      name="facility_name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[facility_city]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_city" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[facility_address]"
+                      dataType="wstr"
+                      length="200"
+                      name="facility_address" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerID]"
+                      dataType="wstr"
+                      length="50"
+                      name="OwnerID" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load Data to Facility Staging table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stgFacility]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].Columns[facility_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="facility_id"
+                      externalMetadataColumnId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].ExternalColumns[facility_id]"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_id]" />
+                    <inputColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].Columns[facility_name]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="facility_name"
+                      externalMetadataColumnId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].ExternalColumns[facility_name]"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_name]" />
+                    <inputColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].Columns[facility_city]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="facility_city"
+                      externalMetadataColumnId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].ExternalColumns[facility_city]"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_city]" />
+                    <inputColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].Columns[facility_address]"
+                      cachedDataType="wstr"
+                      cachedLength="200"
+                      cachedName="facility_address"
+                      externalMetadataColumnId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].ExternalColumns[facility_address]"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_address]" />
+                    <inputColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].Columns[OwnerID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="OwnerID"
+                      externalMetadataColumnId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerID]"
+                      lineageId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].ExternalColumns[facility_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].ExternalColumns[facility_name]"
+                      dataType="wstr"
+                      length="200"
+                      name="facility_name" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].ExternalColumns[facility_city]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_city" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].ExternalColumns[facility_address]"
+                      dataType="wstr"
+                      length="200"
+                      name="facility_address" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerID]"
+                      dataType="wstr"
+                      length="50"
+                      name="OwnerID" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract Facility Data to Staging.Paths[Flat File Source Output]"
+              endId="Package\Extract Facility Data to Staging\Load Data to Facility Staging table.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Extract Facility Data to Staging\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Extract Owner Data to Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{30800E16-5550-4B5B-BCB9-5C7710028C70}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract Owner Data to Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\Extract Owner Data to Staging.EventHandlers[OnPreExecute]"
+          DTS:CreationName="OnPreExecute"
+          DTS:DTSID="{4AD84D17-065B-4B6D-9892-01D03B81CC51}"
+          DTS:EventID="0"
+          DTS:EventName="OnPreExecute"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{628B048C-76F2-4EBA-BDD7-16CCEAD207A7}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Extract Owner Data to Staging.EventHandlers[OnPreExecute]\Truncate Owners Staging Table"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{49AC2F50-E811-4DEB-AD13-5A4FBA70BBC2}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Truncate Owners Staging Table"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{B16033BE-AE02-4C0E-99E6-CAB7D0EA1098}"
+                  SQLTask:SqlStatementSource="truncate table dbo.stgOwners" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract Owner Data to Staging\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Owner Data to Staging\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerID]"
+                      length="50"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerID]"
+                      name="OwnerID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerName]"
+                      length="50"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerName]"
+                      name="OwnerName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerPhoneNumber]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerPhoneNumber]"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerPhoneNumber]"
+                      name="OwnerPhoneNumber"
+                      precision="18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerEmail]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerEmail]"
+                      length="50"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerEmail]"
+                      name="OwnerEmail"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerID]"
+                      dataType="wstr"
+                      length="50"
+                      name="OwnerID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerName]"
+                      dataType="wstr"
+                      length="50"
+                      name="OwnerName" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerPhoneNumber]"
+                      dataType="numeric"
+                      name="OwnerPhoneNumber"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerEmail]"
+                      dataType="wstr"
+                      length="50"
+                      name="OwnerEmail" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load Data to Owners Staging table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stgOwners]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].Columns[OwnerID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="OwnerID"
+                      externalMetadataColumnId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerID]"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerID]" />
+                    <inputColumn
+                      refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].Columns[OwnerName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="OwnerName"
+                      externalMetadataColumnId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerName]"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerName]" />
+                    <inputColumn
+                      refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].Columns[OwnerPhoneNumber]"
+                      cachedDataType="numeric"
+                      cachedName="OwnerPhoneNumber"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerPhoneNumber]"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerPhoneNumber]" />
+                    <inputColumn
+                      refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].Columns[OwnerEmail]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="OwnerEmail"
+                      externalMetadataColumnId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerEmail]"
+                      lineageId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerEmail]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerID]"
+                      dataType="wstr"
+                      length="50"
+                      name="OwnerID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerName]"
+                      dataType="wstr"
+                      length="50"
+                      name="OwnerName" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerPhoneNumber]"
+                      dataType="numeric"
+                      name="OwnerPhoneNumber"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerEmail]"
+                      dataType="wstr"
+                      length="50"
+                      name="OwnerEmail" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract Owner Data to Staging.Paths[Flat File Source Output]"
+              endId="Package\Extract Owner Data to Staging\Load Data to Owners Staging table.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Extract Owner Data to Staging\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Extract Rating Data to Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D727ECEA-8276-4D21-9B26-C280AE2B9497}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract Rating Data to Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\Extract Rating Data to Staging.EventHandlers[OnPreExecute]"
+          DTS:CreationName="OnPreExecute"
+          DTS:DTSID="{B8B7D4B2-028A-441F-BC76-018750E5B27A}"
+          DTS:EventID="0"
+          DTS:EventName="OnPreExecute"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{A0813A05-413D-483E-94B5-64079DBB8452}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Extract Rating Data to Staging.EventHandlers[OnPreExecute]\Truncate Ratings Staging Table"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{EC396549-FD3D-4FD4-ADB5-4D6128643271}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Truncate Ratings Staging Table"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{B16033BE-AE02-4C0E-99E6-CAB7D0EA1098}"
+                  SQLTask:SqlStatementSource="truncate table dbo.stgRating" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract Rating Data to Staging\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Rating Data to Staging\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager 2]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[RatingID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[RatingID]"
+                      length="50"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[RatingID]"
+                      name="RatingID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[facility_id]"
+                      length="50"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_id]"
+                      name="facility_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerID]"
+                      length="50"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerID]"
+                      name="OwnerID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[ActivityDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ActivityDate]"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[ActivityDate]"
+                      name="ActivityDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Fine]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Fine]"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Fine]"
+                      name="Fine"
+                      precision="18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[score]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[score]"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[score]"
+                      name="score"
+                      precision="18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[RatingID]"
+                      dataType="wstr"
+                      length="50"
+                      name="RatingID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[facility_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[OwnerID]"
+                      dataType="wstr"
+                      length="50"
+                      name="OwnerID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[ActivityDate]"
+                      dataType="dbTimeStamp"
+                      name="ActivityDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Fine]"
+                      dataType="numeric"
+                      name="Fine"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[score]"
+                      dataType="numeric"
+                      name="score"
+                      precision="18" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load data to Ratings Staging Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stgRating]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].Columns[RatingID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="RatingID"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[RatingID]"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[RatingID]" />
+                    <inputColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].Columns[facility_id]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="facility_id"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[facility_id]"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[facility_id]" />
+                    <inputColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].Columns[OwnerID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="OwnerID"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerID]"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[OwnerID]" />
+                    <inputColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].Columns[ActivityDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ActivityDate"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[ActivityDate]"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[ActivityDate]" />
+                    <inputColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].Columns[Fine]"
+                      cachedDataType="numeric"
+                      cachedName="Fine"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[Fine]"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[Fine]" />
+                    <inputColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].Columns[score]"
+                      cachedDataType="numeric"
+                      cachedName="score"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[score]"
+                      lineageId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output].Columns[score]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[RatingID]"
+                      dataType="wstr"
+                      length="50"
+                      name="RatingID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[facility_id]"
+                      dataType="wstr"
+                      length="50"
+                      name="facility_id" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[OwnerID]"
+                      dataType="wstr"
+                      length="50"
+                      name="OwnerID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[ActivityDate]"
+                      dataType="dbTimeStamp"
+                      name="ActivityDate" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[Fine]"
+                      dataType="numeric"
+                      name="Fine"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[score]"
+                      dataType="numeric"
+                      name="score"
+                      precision="18" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract Rating Data to Staging.Paths[Flat File Source Output]"
+              endId="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Extract Rating Data to Staging\Flat File Source.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Extract Violations Data to Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D067551B-2334-4BDC-861C-4E28FB4AD360}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Extract Violations Data to Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:EventHandlers>
+        <DTS:EventHandler
+          DTS:refId="Package\Extract Violations Data to Staging.EventHandlers[OnPreExecute]"
+          DTS:CreationName="OnPreExecute"
+          DTS:DTSID="{B872936C-759B-4F23-8BCB-DB440BAC7C39}"
+          DTS:EventID="-1"
+          DTS:EventName="OnPreExecute"
+          DTS:LocaleID="-1">
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:Description="The propagate property of the event"
+              DTS:DTSID="{1FBEFF62-2894-480B-84AF-5303801A9A44}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="System"
+              DTS:ObjectName="Propagate">
+              <DTS:VariableValue
+                DTS:DataType="11">-1</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Extract Violations Data to Staging.EventHandlers[OnPreExecute]\Truncate Violations Staging Table"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{66E5C7CE-5E29-4974-9DE2-19F7F4411800}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Truncate Violations Staging Table"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{B16033BE-AE02-4C0E-99E6-CAB7D0EA1098}"
+                  SQLTask:SqlStatementSource="truncate table dbo.StgViolations" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:EventHandler>
+      </DTS:EventHandlers>
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Load data to Violations Staging Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stgViolations]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input].Columns[ViolationID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ViolationID"
+                      externalMetadataColumnId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[ViolationID]"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ViolationID]" />
+                    <inputColumn
+                      refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input].Columns[ViolationDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ViolationDescription"
+                      externalMetadataColumnId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[ViolationDescription]"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ViolationDescription]" />
+                    <inputColumn
+                      refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input].Columns[ViolationStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ViolationStatus"
+                      externalMetadataColumnId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[ViolationStatus]"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ViolationStatus]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[ViolationID]"
+                      dataType="wstr"
+                      length="50"
+                      name="ViolationID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[ViolationDescription]"
+                      dataType="wstr"
+                      length="100"
+                      name="ViolationDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input].ExternalColumns[ViolationStatus]"
+                      dataType="wstr"
+                      length="50"
+                      name="ViolationStatus" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Extract Violations Data to Staging\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Violations]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Extract Violations Data to Staging\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_SourceDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_SourceDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ViolationID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ViolationID]"
+                      length="50"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ViolationID]"
+                      name="ViolationID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ViolationDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ViolationDescription]"
+                      length="100"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ViolationDescription]"
+                      name="ViolationDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ViolationStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ViolationStatus]"
+                      length="50"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ViolationStatus]"
+                      name="ViolationStatus"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ViolationID]"
+                      dataType="wstr"
+                      length="50"
+                      name="ViolationID" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ViolationDescription]"
+                      dataType="wstr"
+                      length="100"
+                      name="ViolationDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ViolationStatus]"
+                      dataType="wstr"
+                      length="50"
+                      name="ViolationStatus" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ViolationID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ViolationID]"
+                      name="ViolationID" />
+                    <outputColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ViolationDescription]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ViolationDescription]"
+                      name="ViolationDescription" />
+                    <outputColumn
+                      refId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ViolationStatus]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ViolationStatus]"
+                      name="ViolationStatus" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Extract Violations Data to Staging.Paths[OLE DB Source Output]"
+              endId="Package\Extract Violations Data to Staging\Load data to Violations Staging Table.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Extract Violations Data to Staging\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{48D938D3-527A-4228-8CB7-37B52152EEBC}"
+      DTS:From="Package\Extract Violations Data to Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Extract Owner Data to Staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A0AA7986-1F14-4561-9A02-4F2F5811CD17}"
+      DTS:From="Package\Extract Owner Data to Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Extract Facility Data to Staging" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{91657CDB-033A-4C5B-9134-1BBD4168D709}"
+      DTS:From="Package\Extract Facility Data to Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Extract Rating Data to Staging" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Extract Violations Data to Staging"
+          TopLeft="32.5,14.5" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Extract Owner Data to Staging"
+          TopLeft="35,119" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="148.75,56.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.5"
+              Start="0,0"
+              End="0,55">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Extract Facility Data to Staging"
+          TopLeft="32,212" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="145.25,161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51"
+              Start="0,0"
+              End="0,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Extract Rating Data to Staging"
+          TopLeft="33,308" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="144,254">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Extract Violations Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Extract Violations Data to Staging\OLE DB Source"
+          TopLeft="151,116" />
+        <NodeLayout
+          Size="254,42"
+          Id="Package\Extract Violations Data to Staging\Load data to Violations Staging Table"
+          TopLeft="449,114" />
+        <EdgeLayout
+          Id="Package\Extract Violations Data to Staging.Paths[OLE DB Source Output]"
+          TopLeft="301,136">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="148,0"
+              Start="0,0"
+              End="140.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="140.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Extract Violations Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="237,42"
+          Id="Package\Extract Violations Data to Staging.EventHandlers[OnPreExecute]\Truncate Violations Staging Table"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Violations Data to Staging\Load data to Violations Staging Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Violations Data to Staging\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract Owner Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Extract Owner Data to Staging\Flat File Source"
+          TopLeft="204,53" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Extract Owner Data to Staging\Load Data to Owners Staging table"
+          TopLeft="476,54" />
+        <EdgeLayout
+          Id="Package\Extract Owner Data to Staging.Paths[Flat File Source Output]"
+          TopLeft="355,74.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="121,0"
+              Start="0,0"
+              End="113.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="113.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Owner Data to Staging\Load Data to Owners Staging table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package\Extract Owner Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Extract Owner Data to Staging.EventHandlers[OnPreExecute]\Truncate Owners Staging Table"
+          TopLeft="232,41" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Extract Facility Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Extract Facility Data to Staging\Flat File Source"
+          TopLeft="155,110" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Extract Facility Data to Staging\Load Data to Facility Staging table"
+          TopLeft="461,114" />
+        <EdgeLayout
+          Id="Package\Extract Facility Data to Staging.Paths[Flat File Source Output]"
+          TopLeft="306,133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="155,0"
+              Start="0,0"
+              End="147.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="147.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Extract Facility Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Extract Facility Data to Staging.EventHandlers[OnPreExecute]\Truncate Facility Staging Table"
+          TopLeft="178,47" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Facility Data to Staging\Load Data to Facility Staging table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract Rating Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Extract Rating Data to Staging\Flat File Source"
+          TopLeft="188,102" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table"
+          TopLeft="479,109" />
+        <EdgeLayout
+          Id="Package\Extract Rating Data to Staging.Paths[Flat File Source Output]"
+          TopLeft="339,126.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="140,0"
+              Start="0,0"
+              End="132.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="132.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package\Extract Rating Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="227,42"
+          Id="Package\Extract Rating Data to Staging.EventHandlers[OnPreExecute]\Truncate Ratings Staging Table"
+          TopLeft="228,30" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
