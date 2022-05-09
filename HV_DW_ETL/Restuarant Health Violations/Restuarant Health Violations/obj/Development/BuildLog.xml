@@ -2,18 +2,23 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Restuarant Health Violations</Name>
-    <LastWriteTime>2022-05-09T07:37:50.2185037Z</LastWriteTime>
+    <LastWriteTime>2022-05-09T17:52:21.5182Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>HV_Load_Staging.dtsx</Name>
-      <LastWriteTime>2022-05-09T06:37:00.2331692Z</LastWriteTime>
+      <LastWriteTime>2022-05-09T17:53:47.1734808Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Data_Profiling.dtsx</Name>
-      <LastWriteTime>2022-05-09T07:37:50.2087591Z</LastWriteTime>
+      <LastWriteTime>2022-05-09T08:03:19.8733746Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>HV_Load_DW.dtsx</Name>
+      <LastWriteTime>2022-05-09T17:52:21.5082268Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
