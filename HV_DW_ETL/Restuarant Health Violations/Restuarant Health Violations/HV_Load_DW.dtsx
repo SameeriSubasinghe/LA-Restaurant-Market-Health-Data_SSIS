@@ -11,25 +11,347 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="HV_Load_DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{531BBCF3-9A8E-42FD-93A1-C9C70435C200}">
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{DC87AF69-CA2A-4CB1-9B6F-F12117DE08A5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_DW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{59D714BF-26EE-4C56-834E-886DAA1361A2}"
+      DTS:ObjectName="DESKTOP-QJ3GV6A.HV_DW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-QJ3GV6A;Initial Catalog=HV_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{178330CD-3B7A-4F82-8148-B620005C4BD9}"
+      DTS:ObjectName="DESKTOP-QJ3GV6A.HV_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-QJ3GV6A;Initial Catalog=HV_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\‘Transform and Load Violation Category"
+      DTS:refId="Package\Transform and Load Violation"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{393F95FC-D4A1-441E-9E3E-FF5A8DC57D60}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="‘Transform and Load Violation Category"
+      DTS:ObjectName="Transform and Load Violation"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
         <pipeline
-          version="1" />
+          version="1">
+          <components>
+            <component
+              refId="Package\Transform and Load Violation\Extract from Violation Staging"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract from Violation Staging"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stgViolations]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and Load Violation\Extract from Violation Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_Staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].Columns[ViolationID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].ExternalColumns[ViolationID]"
+                      length="50"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].Columns[ViolationID]"
+                      name="ViolationID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].Columns[ViolationDescription]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].ExternalColumns[ViolationDescription]"
+                      length="100"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].Columns[ViolationDescription]"
+                      name="ViolationDescription"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].Columns[ViolationStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].ExternalColumns[ViolationStatus]"
+                      length="50"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].Columns[ViolationStatus]"
+                      name="ViolationStatus"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].ExternalColumns[ViolationID]"
+                      dataType="wstr"
+                      length="50"
+                      name="ViolationID" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].ExternalColumns[ViolationDescription]"
+                      dataType="wstr"
+                      length="100"
+                      name="ViolationDescription" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].ExternalColumns[ViolationStatus]"
+                      dataType="wstr"
+                      length="50"
+                      name="ViolationStatus" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output].Columns[ViolationID]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output].Columns[ViolationID]"
+                      name="ViolationID" />
+                    <outputColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output].Columns[ViolationDescription]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output].Columns[ViolationDescription]"
+                      name="ViolationDescription" />
+                    <outputColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output].Columns[ViolationStatus]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output].Columns[ViolationStatus]"
+                      name="ViolationStatus" />
+                    <outputColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load Violation\Load DimViolation"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Load DimViolation"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec dbo.UpdateDimViolation ?, ?, ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and Load Violation\Load DimViolation.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-QJ3GV6A.HV_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input].Columns[ViolationDescription]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="ViolationDescription"
+                      externalMetadataColumnId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input].ExternalColumns[@ViolationDescription]"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].Columns[ViolationDescription]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input].Columns[ViolationStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ViolationStatus"
+                      externalMetadataColumnId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input].ExternalColumns[@ViolationStatus]"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].Columns[ViolationStatus]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input].Columns[ViolationID]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ViolationID"
+                      externalMetadataColumnId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input].ExternalColumns[@ViolationID]"
+                      lineageId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output].Columns[ViolationID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input].ExternalColumns[@ViolationID]"
+                      dataType="wstr"
+                      length="50"
+                      name="@ViolationID">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input].ExternalColumns[@ViolationDescription]"
+                      dataType="wstr"
+                      length="100"
+                      name="@ViolationDescription">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input].ExternalColumns[@ViolationStatus]"
+                      dataType="wstr"
+                      length="50"
+                      name="@ViolationStatus">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load Violation\Load DimViolation.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load Violation\Load DimViolation.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load Violation\Load DimViolation.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load Violation\Load DimViolation.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load Violation\Load DimViolation.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load Violation\Load DimViolation.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Transform and Load Violation.Paths[OLE DB Source Output]"
+              endId="Package\Transform and Load Violation\Load DimViolation.Inputs[OLE DB Command Input]"
+              name="OLE DB Source Output"
+              startId="Package\Transform and Load Violation\Extract from Violation Staging.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -46,11 +368,62 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="265,42"
-          Id="Package\‘Transform and Load Violation Category"
+          Size="218,42"
+          Id="Package\Transform and Load Violation"
           TopLeft="139,17" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\Transform and Load Violation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Transform and Load Violation\Extract from Violation Staging"
+          TopLeft="74,159" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Transform and Load Violation\Load DimViolation"
+          TopLeft="451,156" />
+        <EdgeLayout
+          Id="Package\Transform and Load Violation.Paths[OLE DB Source Output]"
+          TopLeft="293,178.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="158,0"
+              Start="0,0"
+              End="150.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="150.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load Violation\Extract from Violation Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

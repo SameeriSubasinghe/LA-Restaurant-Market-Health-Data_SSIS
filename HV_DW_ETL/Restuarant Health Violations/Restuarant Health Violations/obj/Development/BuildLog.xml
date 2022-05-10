@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Restuarant Health Violations</Name>
-    <LastWriteTime>2022-05-09T17:52:21.5182Z</LastWriteTime>
+    <LastWriteTime>2022-05-10T03:33:27.6474573Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -18,7 +18,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>HV_Load_DW.dtsx</Name>
-      <LastWriteTime>2022-05-09T17:52:21.5082268Z</LastWriteTime>
+      <LastWriteTime>2022-05-10T03:33:25.86157Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
