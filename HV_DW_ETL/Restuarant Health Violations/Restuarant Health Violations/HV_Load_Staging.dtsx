@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="HV_Load_Staging"
   DTS:PackageType="5"
-  DTS:VersionBuild="47"
-  DTS:VersionGUID="{95C0C959-8FA5-428E-B785-3BB20EB78AB3}">
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{0BFED512-9647-487D-B29D-6BA713354871}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -38,18 +38,6 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=DESKTOP-QJ3GV6A;Initial Catalog=HV_Staging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
-      DTS:CreationName="EXCEL"
-      DTS:DTSID="{DABAFDA0-F243-41EC-A119-8CA48BCAD75E}"
-      DTS:ObjectName="Excel Connection Manager">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectRetryCount="0"
-          DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\DWBI ASSIGNMENT 1\DataSources\Rating.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -111,7 +99,7 @@
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Flat File Connection Manager 1]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{C1BA448F-A4B1-42FF-A667-6AD96EAC71AB}"
+      DTS:DTSID="{B8B68FFD-3147-4050-9889-8C1264156204}"
       DTS:ObjectName="Flat File Connection Manager 1">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -131,7 +119,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="FacilityID"
-              DTS:DTSID="{1600FF20-DCE5-443E-8C87-44F6834388AF}"
+              DTS:DTSID="{B5E853E8-1F82-4306-951F-0F5513E1EEB2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -140,7 +128,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="FacilityName"
-              DTS:DTSID="{923F355F-C37D-4BC4-AA45-33771D69D08F}"
+              DTS:DTSID="{22C395D0-9142-485C-895E-FB636242506D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -149,7 +137,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="FacilityCity"
-              DTS:DTSID="{8CFA09B5-05F4-4202-93F3-D74E632185DB}"
+              DTS:DTSID="{00B43F2C-2A7F-402B-9295-7DF4C2BFEE88}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -158,7 +146,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="FacilityAddress"
-              DTS:DTSID="{35C377EA-2A01-402C-A3D8-6292D908CBF5}"
+              DTS:DTSID="{31661DD3-6209-4B25-BAF0-C1EABBE007F2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -167,7 +155,7 @@
               DTS:DataType="130"
               DTS:TextQualified="True"
               DTS:ObjectName="OwnerID"
-              DTS:DTSID="{A8A4CA34-E407-4121-A518-4656DB329B36}"
+              DTS:DTSID="{3995A483-1B86-4A74-871B-25BAF81A3373}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -1909,17 +1897,21 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="237,42"
-          Id="Package\Extract Violations Data to Staging"
-          TopLeft="32.5,14.5" />
+          Size="224,42"
+          Id="Package\Extract Facility Data to Staging"
+          TopLeft="315,165" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Extract Owner Data to Staging"
+          TopLeft="188,80" />
         <NodeLayout
           Size="222,42"
           Id="Package\Extract Rating Data to Staging"
           TopLeft="475,246" />
         <NodeLayout
-          Size="223,42"
-          Id="Package\Extract Owner Data to Staging"
-          TopLeft="188,80" />
+          Size="237,42"
+          Id="Package\Extract Violations Data to Staging"
+          TopLeft="32.5,14.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="151,56.5">
@@ -1946,44 +1938,6 @@
                     Point3="148.5,15.75" />
                   <mssgle:LineSegment
                     End="148.5,16" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="224,42"
-          Id="Package\Extract Facility Data to Staging"
-          TopLeft="315,165" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="427,207">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="159,39"
-              Start="0,0"
-              End="159,31.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15.5"
-                    Point2="0,19.5"
-                    Point3="4,19.5" />
-                  <mssgle:LineSegment
-                    End="155,19.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="155,19.5"
-                    Point2="159,19.5"
-                    Point3="159,23.5" />
-                  <mssgle:LineSegment
-                    End="159,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2026,14 +1980,228 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="427,207">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="159,39"
+              Start="0,0"
+              End="159,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="4,19.5" />
+                  <mssgle:LineSegment
+                    End="155,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="155,19.5"
+                    Point2="159,19.5"
+                    Point3="159,23.5" />
+                  <mssgle:LineSegment
+                    End="159,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Extract Violations Data to Staging">
+    design-time-name="Package\Extract Facility Data to Staging">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="240,42"
+          Id="Package\Extract Facility Data to Staging\Load Data to Facility Staging table"
+          TopLeft="461,114" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Extract Facility Data to Staging\Flat File Source"
+          TopLeft="205,113" />
+        <EdgeLayout
+          Id="Package\Extract Facility Data to Staging.Paths[Flat File Source Output]"
+          TopLeft="356,134.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105,0"
+              Start="0,0"
+              End="97.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="97.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Extract Facility Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="224,42"
+          Id="Package\Extract Facility Data to Staging.EventHandlers[OnPreExecute]\Truncate Facility Staging Table"
+          TopLeft="294,93" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Facility Data to Staging\Load Data to Facility Staging table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract Owner Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="239,42"
+          Id="Package\Extract Owner Data to Staging\Load Data to Owner Staging table"
+          TopLeft="476,54" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Extract Owner Data to Staging\Flat File Source"
+          TopLeft="171,54" />
+        <EdgeLayout
+          Id="Package\Extract Owner Data to Staging.Paths[Flat File Source Output]"
+          TopLeft="322,75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="154,0"
+              Start="0,0"
+              End="146.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="146.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Extract Owner Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Extract Owner Data to Staging.EventHandlers[OnPreExecute]\Truncate Owner Staging Table"
+          TopLeft="188,64" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <TaskHost
+    design-time-name="Package\Extract Rating Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Extract Rating Data to Staging\Flat File Source"
+          TopLeft="153,121" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table"
+          TopLeft="481,125" />
+        <EdgeLayout
+          Id="Package\Extract Rating Data to Staging.Paths[Flat File Source Output]"
+          TopLeft="304,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="177,0"
+              Start="0,0"
+              End="169.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="169.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Extract Rating Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Extract Rating Data to Staging.EventHandlers[OnPreExecute]\Truncate Rating Staging Table"
+          TopLeft="292,97" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract Violations Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\Extract Violations Data to Staging\OLE DB Source"
@@ -2061,7 +2229,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2105,170 +2275,5 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Extract Rating Data to Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="244,42"
-          Id="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table"
-          TopLeft="481,125" />
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Extract Rating Data to Staging\Flat File Source"
-          TopLeft="153,121" />
-        <EdgeLayout
-          Id="Package\Extract Rating Data to Staging.Paths[Flat File Source Output]"
-          TopLeft="304,144">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="177,0"
-              Start="0,0"
-              End="169.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="169.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <DtsEventHandler
-    design-time-name="Package\Extract Rating Data to Staging.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="222,42"
-          Id="Package\Extract Rating Data to Staging.EventHandlers[OnPreExecute]\Truncate Rating Staging Table"
-          TopLeft="292,97" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Rating Data to Staging\Load data to Ratings Staging Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Extract Owner Data to Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Extract Owner Data to Staging\Flat File Source"
-          TopLeft="171,54" />
-        <NodeLayout
-          Size="239,42"
-          Id="Package\Extract Owner Data to Staging\Load Data to Owner Staging table"
-          TopLeft="476,54" />
-        <EdgeLayout
-          Id="Package\Extract Owner Data to Staging.Paths[Flat File Source Output]"
-          TopLeft="322,75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="154,0"
-              Start="0,0"
-              End="146.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="146.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <DtsEventHandler
-    design-time-name="Package\Extract Owner Data to Staging.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="223,42"
-          Id="Package\Extract Owner Data to Staging.EventHandlers[OnPreExecute]\Truncate Owner Staging Table"
-          TopLeft="188,64" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <TaskHost
-    design-time-name="Package\Extract Facility Data to Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="240,42"
-          Id="Package\Extract Facility Data to Staging\Load Data to Facility Staging table"
-          TopLeft="461,114" />
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Extract Facility Data to Staging\Flat File Source"
-          TopLeft="159,115" />
-        <EdgeLayout
-          Id="Package\Extract Facility Data to Staging.Paths[Flat File Source Output]"
-          TopLeft="310,135.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="151,0"
-              Start="0,0"
-              End="143.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="143.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <DtsEventHandler
-    design-time-name="Package\Extract Facility Data to Staging.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="224,42"
-          Id="Package\Extract Facility Data to Staging.EventHandlers[OnPreExecute]\Truncate Facility Staging Table"
-          TopLeft="294,93" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
