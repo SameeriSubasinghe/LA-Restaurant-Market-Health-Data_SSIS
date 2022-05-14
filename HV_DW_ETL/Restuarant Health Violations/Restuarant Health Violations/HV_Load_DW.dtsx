@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="HV_Load_DW"
   DTS:PackageType="5"
-  DTS:VersionBuild="36"
-  DTS:VersionGUID="{47E6B966-E7D9-4E24-B71D-5B6583DD22B4}">
+  DTS:VersionBuild="39"
+  DTS:VersionGUID="{5C7BDB33-F3A5-40B8-BC17-D785359FA6BF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -3288,12 +3288,6 @@ where [refTable].[AlternateFacilityID] = ?</property>
                       externalMetadataColumnId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].ExternalColumns[Score]"
                       lineageId="Package\Transform and Load Rating Data\Extract from Rating Staging.Outputs[OLE DB Source Output].Columns[Score]" />
                     <inputColumn
-                      refId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].Columns[InsertDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="InsertDate"
-                      externalMetadataColumnId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
-                      lineageId="Package\Transform and Load Rating Data\Derive Insert and Modified Date fields.Outputs[Derived Column Output].Columns[InsertDate]" />
-                    <inputColumn
                       refId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="ModifiedDate"
@@ -3317,6 +3311,12 @@ where [refTable].[AlternateFacilityID] = ?</property>
                       cachedName="DateSK"
                       externalMetadataColumnId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].ExternalColumns[ActivityDate]"
                       lineageId="Package\Transform and Load Rating Data\Date Lookup.Outputs[Lookup Match Output].Columns[DateSK]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].Columns[InsertDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="InsertDate"
+                      externalMetadataColumnId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].ExternalColumns[accm_txn_create_time]"
+                      lineageId="Package\Transform and Load Rating Data\Derive Insert and Modified Date fields.Outputs[Derived Column Output].Columns[InsertDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -3346,13 +3346,21 @@ where [refTable].[AlternateFacilityID] = ?</property>
                       dataType="i4"
                       name="Score" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
-                      dataType="dbTimeStamp"
-                      name="InsertDate" />
-                    <externalMetadataColumn
                       refId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
                       dataType="dbTimeStamp"
                       name="ModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].ExternalColumns[accm_txn_create_time]"
+                      dataType="dbTimeStamp"
+                      name="accm_txn_create_time" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].ExternalColumns[accm_txn_complete_time]"
+                      dataType="dbTimeStamp"
+                      name="accm_txn_complete_time" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Rating Data\Load FactRating.Inputs[OLE DB Destination Input].ExternalColumns[txn_process_time_hours]"
+                      dataType="i4"
+                      name="txn_process_time_hours" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3922,9 +3930,17 @@ where [refTable].[AlternateViolationID] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="235,42"
+          Id="Package\Transform and Load Facility Data"
+          TopLeft="259,208" />
+        <NodeLayout
           Size="234,42"
           Id="Package\Transform and Load Owner Data"
           TopLeft="130,130" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Transform and Load Rating Data"
+          TopLeft="428,284" />
         <NodeLayout
           Size="218,42"
           Id="Package\Transform and Load Violation"
@@ -3963,10 +3979,6 @@ where [refTable].[AlternateViolationID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="235,42"
-          Id="Package\Transform and Load Facility Data"
-          TopLeft="259,208" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="247,172">
@@ -4001,10 +4013,6 @@ where [refTable].[AlternateViolationID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="233,42"
-          Id="Package\Transform and Load Rating Data"
-          TopLeft="428,284" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="376.5,250">
@@ -4043,124 +4051,286 @@ where [refTable].[AlternateViolationID] = ?</property>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Transform and Load Owner Data">
+    design-time-name="Package\Transform and Load Facility Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="210,42"
-          Id="Package\Transform and Load Owner Data\Extract from Owner Staging"
-          TopLeft="127.5,5.5" />
+          Size="224,42"
+          Id="Package\Transform and Load Facility Data\Extract from Owner Dimension"
+          TopLeft="71,174" />
         <NodeLayout
-          Size="231,42"
-          Id="Package\Transform and Load Owner Data\Replace Null OwnerEmail Values"
-          TopLeft="117,107.5" />
+          Size="156,42"
+          Id="Package\Transform and Load Facility Data\Load DimFacility"
+          TopLeft="520,273" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Transform and Load Facility Data\Merge Join"
+          TopLeft="634,100" />
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Transform and Load Facility Data\Facility Sort"
+          TopLeft="388,59" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\Transform and Load Facility Data\Extract from Facility Staging"
+          TopLeft="78,60" />
+        <NodeLayout
+          Size="132,42"
+          Id="Package\Transform and Load Facility Data\Owner Sort"
+          TopLeft="392,176" />
         <EdgeLayout
-          Id="Package\Transform and Load Owner Data.Paths[OLE DB Source Output]"
-          TopLeft="232.5,47.5">
+          Id="Package\Transform and Load Facility Data.Paths[Merge Join Output]"
+          TopLeft="719.333333333333,142">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="-121.333333333333,131"
               Start="0,0"
-              End="0,52.5">
+              End="-121.333333333333,123.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="133,42"
-          Id="Package\Transform and Load Owner Data\Owner SCD"
-          TopLeft="166,209.5" />
-        <EdgeLayout
-          Id="Package\Transform and Load Owner Data.Paths[Derived Column Output]"
-          TopLeft="232.5,149.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="154,42"
-          Id="Package\Transform and Load Owner Data\Derived Column"
-          TopLeft="17.5000000000001,311.5" />
-        <EdgeLayout
-          Id="Package\Transform and Load Owner Data.Paths[Historical Attribute Inserts Output]"
-          TopLeft="201.25,251.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-106.75,60"
-              Start="0,0"
-              End="-106.75,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.7862407862408" />
+                    End="0,49.3556231003039" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.7862407862408"
-                    Point2="0,20.7862407862408"
-                    Point3="-4,20.7862407862408" />
+                    Point1="0,49.3556231003039"
+                    Point2="0,53.3556231003039"
+                    Point3="-4,53.3556231003039" />
                   <mssgle:LineSegment
-                    End="-102.75,20.7862407862408" />
+                    End="-117.333333333333,53.3556231003039" />
                   <mssgle:CubicBezierSegment
-                    Point1="-102.75,20.7862407862408"
-                    Point2="-106.75,20.7862407862408"
-                    Point3="-106.75,24.7862407862408" />
+                    Point1="-117.333333333333,53.3556231003039"
+                    Point2="-121.333333333333,53.3556231003039"
+                    Point3="-121.333333333333,57.3556231003039" />
                   <mssgle:LineSegment
-                    End="-106.75,52.5" />
+                    End="-121.333333333333,123.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-128.43138671875,25.7862407862408,150.1127734375,11.609375"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="166,42"
-          Id="Package\Transform and Load Owner Data\OLE DB Command"
-          TopLeft="5.50000000000006,413.5" />
         <EdgeLayout
-          Id="Package\Transform and Load Owner Data.Paths[Derived Column Output1]"
-          TopLeft="91.5000000000001,353.5">
+          Id="Package\Transform and Load Facility Data.Paths[Sort Output1]"
+          TopLeft="458,176">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="241,-34"
               Start="0,0"
-              End="0,52.5">
+              End="241,-26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,-13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-13"
+                    Point2="0,-17"
+                    Point3="4,-17" />
+                  <mssgle:LineSegment
+                    End="237,-17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="237,-17"
+                    Point2="241,-17"
+                    Point3="241,-21" />
+                  <mssgle:LineSegment
+                    End="241,-26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load Facility Data.Paths[Sort Output]"
+          TopLeft="522,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="112,41"
+              Start="0,0"
+              End="104.5,41">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="52,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52,0"
+                    Point2="56,0"
+                    Point3="56,4" />
+                  <mssgle:LineSegment
+                    End="56,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="56,37"
+                    Point2="56,41"
+                    Point3="60,41" />
+                  <mssgle:LineSegment
+                    End="104.5,41" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load Facility Data.Paths[OLE DB Source Output1]"
+          TopLeft="295,196">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="97,0"
+              Start="0,0"
+              End="89.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="89.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load Facility Data.Paths[OLE DB Source Output]"
+          TopLeft="289,80.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99,0"
+              Start="0,0"
+              End="91.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="91.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load Facility Data\Extract from Owner Dimension">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load Facility Data\Extract from Facility Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transform and Load Owner Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Transform and Load Owner Data\OLE DB Command 1"
+          TopLeft="294,311.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Transform and Load Owner Data\Insert Destination"
+          TopLeft="151,719.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Transform and Load Owner Data\OLE DB Command"
+          TopLeft="5.50000000000006,413.5" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Transform and Load Owner Data\Derived Column 1"
+          TopLeft="151,617.5" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Transform and Load Owner Data\Owner SCD"
+          TopLeft="166,209.5" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\Transform and Load Owner Data\Replace Null OwnerEmail Values"
+          TopLeft="117,107.5" />
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Transform and Load Owner Data\Union All"
+          TopLeft="172,515.5" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\Transform and Load Owner Data\Extract from Owner Staging"
+          TopLeft="127.5,5.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Transform and Load Owner Data\Derived Column"
+          TopLeft="17.5000000000001,311.5" />
+        <EdgeLayout
+          Id="Package\Transform and Load Owner Data.Paths[OLE DB Command Output]"
+          TopLeft="88.5000000000001,455.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="125.166666666667,60"
+              Start="0,0"
+              End="125.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5301794453507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5301794453507"
+                    Point2="0,35.5301794453507"
+                    Point3="4,35.5301794453507" />
+                  <mssgle:LineSegment
+                    End="121.166666666667,35.5301794453507" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121.166666666667,35.5301794453507"
+                    Point2="125.166666666667,35.5301794453507"
+                    Point3="125.166666666667,39.5301794453507" />
+                  <mssgle:LineSegment
+                    End="125.166666666667,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4169,10 +4339,6 @@ where [refTable].[AlternateViolationID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="121,42"
-          Id="Package\Transform and Load Owner Data\Union All"
-          TopLeft="172,515.5" />
         <EdgeLayout
           Id="Package\Transform and Load Owner Data.Paths[New Output]"
           TopLeft="232.5,251.5">
@@ -4210,69 +4376,41 @@ where [refTable].[AlternateViolationID] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Transform and Load Owner Data.Paths[OLE DB Command Output]"
-          TopLeft="88.5000000000001,455.5">
+          Id="Package\Transform and Load Owner Data.Paths[Historical Attribute Inserts Output]"
+          TopLeft="201.25,251.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="125.166666666667,60"
+              EndConnector="-106.75,60"
               Start="0,0"
-              End="125.166666666667,52.5">
+              End="-106.75,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5301794453507" />
+                    End="0,16.7862407862408" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,31.5301794453507"
-                    Point2="0,35.5301794453507"
-                    Point3="4,35.5301794453507" />
+                    Point1="0,16.7862407862408"
+                    Point2="0,20.7862407862408"
+                    Point3="-4,20.7862407862408" />
                   <mssgle:LineSegment
-                    End="121.166666666667,35.5301794453507" />
+                    End="-102.75,20.7862407862408" />
                   <mssgle:CubicBezierSegment
-                    Point1="121.166666666667,35.5301794453507"
-                    Point2="125.166666666667,35.5301794453507"
-                    Point3="125.166666666667,39.5301794453507" />
+                    Point1="-102.75,20.7862407862408"
+                    Point2="-106.75,20.7862407862408"
+                    Point3="-106.75,24.7862407862408" />
                   <mssgle:LineSegment
-                    End="125.166666666667,52.5" />
+                    End="-106.75,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="-128.43138671875,25.7862407862408,150.1127734375,11.609375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Transform and Load Owner Data\Derived Column 1"
-          TopLeft="151,617.5" />
-        <EdgeLayout
-          Id="Package\Transform and Load Owner Data.Paths[Union All Output 1]"
-          TopLeft="232.5,557.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,60"
-              Start="0,0"
-              End="0,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Transform and Load Owner Data\Insert Destination"
-          TopLeft="151,719.5" />
         <EdgeLayout
           Id="Package\Transform and Load Owner Data.Paths[Derived Column Output2]"
           TopLeft="232.5,659.5">
@@ -4295,10 +4433,50 @@ where [refTable].[AlternateViolationID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="175,42"
-          Id="Package\Transform and Load Owner Data\OLE DB Command 1"
-          TopLeft="294,311.5" />
+        <EdgeLayout
+          Id="Package\Transform and Load Owner Data.Paths[Derived Column Output1]"
+          TopLeft="91.5000000000001,353.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load Owner Data.Paths[Derived Column Output]"
+          TopLeft="232.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Transform and Load Owner Data.Paths[Changing Attribute Updates Output]"
           TopLeft="263.75,251.5">
@@ -4335,36 +4513,42 @@ where [refTable].[AlternateViolationID] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <TaskHost
-    design-time-name="Package\Transform and Load Violation">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="164,42"
-          Id="Package\Transform and Load Violation\Load DimViolation"
-          TopLeft="451,156" />
-        <NodeLayout
-          Size="219,42"
-          Id="Package\Transform and Load Violation\Extract from Violation Staging"
-          TopLeft="74,159" />
         <EdgeLayout
-          Id="Package\Transform and Load Violation.Paths[OLE DB Source Output]"
-          TopLeft="293,178.5">
+          Id="Package\Transform and Load Owner Data.Paths[Union All Output 1]"
+          TopLeft="232.5,557.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="158,0"
+              EndConnector="0,60"
               Start="0,0"
-              End="150.5,0">
+              End="0,52.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="150.5,0" />
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load Owner Data.Paths[OLE DB Source Output]"
+          TopLeft="232.5,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4377,20 +4561,7 @@ where [refTable].[AlternateViolationID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Violation\Extract from Violation Staging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Owner Data\Extract from Owner Staging">
+    design-time-name="Package\Transform and Load Owner Data\Insert Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4473,212 +4644,8 @@ where [refTable].[AlternateViolationID] = ?</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Transform and Load Facility Data">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="211,42"
-          Id="Package\Transform and Load Facility Data\Extract from Facility Staging"
-          TopLeft="78,60" />
-        <NodeLayout
-          Size="224,42"
-          Id="Package\Transform and Load Facility Data\Extract from Owner Dimension"
-          TopLeft="71,174" />
-        <NodeLayout
-          Size="134,42"
-          Id="Package\Transform and Load Facility Data\Facility Sort"
-          TopLeft="388,59" />
-        <EdgeLayout
-          Id="Package\Transform and Load Facility Data.Paths[OLE DB Source Output]"
-          TopLeft="289,80.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="99,0"
-              Start="0,0"
-              End="91.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="91.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="132,42"
-          Id="Package\Transform and Load Facility Data\Owner Sort"
-          TopLeft="392,176" />
-        <EdgeLayout
-          Id="Package\Transform and Load Facility Data.Paths[OLE DB Source Output1]"
-          TopLeft="295,196">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="97,0"
-              Start="0,0"
-              End="89.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="89.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Transform and Load Facility Data\Merge Join"
-          TopLeft="634,100" />
-        <EdgeLayout
-          Id="Package\Transform and Load Facility Data.Paths[Sort Output]"
-          TopLeft="522,80">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="112,41"
-              Start="0,0"
-              End="104.5,41">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="52,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="52,0"
-                    Point2="56,0"
-                    Point3="56,4" />
-                  <mssgle:LineSegment
-                    End="56,37" />
-                  <mssgle:CubicBezierSegment
-                    Point1="56,37"
-                    Point2="56,41"
-                    Point3="60,41" />
-                  <mssgle:LineSegment
-                    End="104.5,41" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transform and Load Facility Data.Paths[Sort Output1]"
-          TopLeft="458,176">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="241,-34"
-              Start="0,0"
-              End="241,-26.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-13" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-13"
-                    Point2="0,-17"
-                    Point3="4,-17" />
-                  <mssgle:LineSegment
-                    End="237,-17" />
-                  <mssgle:CubicBezierSegment
-                    Point1="237,-17"
-                    Point2="241,-17"
-                    Point3="241,-21" />
-                  <mssgle:LineSegment
-                    End="241,-26.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Transform and Load Facility Data\Load DimFacility"
-          TopLeft="520,273" />
-        <EdgeLayout
-          Id="Package\Transform and Load Facility Data.Paths[Merge Join Output]"
-          TopLeft="719.333333333333,142">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-121.333333333333,131"
-              Start="0,0"
-              End="-121.333333333333,123.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,49.3556231003039" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,49.3556231003039"
-                    Point2="0,53.3556231003039"
-                    Point3="-4,53.3556231003039" />
-                  <mssgle:LineSegment
-                    End="-117.333333333333,53.3556231003039" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-117.333333333333,53.3556231003039"
-                    Point2="-121.333333333333,53.3556231003039"
-                    Point3="-121.333333333333,57.3556231003039" />
-                  <mssgle:LineSegment
-                    End="-121.333333333333,123.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Owner Data\Insert Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Facility Data\Extract from Facility Staging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Facility Data\Extract from Owner Dimension">
+    design-time-name="Package\Transform and Load Owner Data\Extract from Owner Staging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4696,27 +4663,43 @@ where [refTable].[AlternateViolationID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="209,42"
-          Id="Package\Transform and Load Rating Data\Extract from Rating Staging"
-          TopLeft="136,49" />
-        <NodeLayout
           Size="157,42"
           Id="Package\Transform and Load Rating Data\Violation Lookup"
-          TopLeft="164,137" />
+          TopLeft="59,117" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Transform and Load Rating Data\Load FactRating"
+          TopLeft="175,326" />
+        <NodeLayout
+          Size="257,42"
+          Id="Package\Transform and Load Rating Data\Derive Insert and Modified Date fields"
+          TopLeft="117,238" />
+        <NodeLayout
+          Size="209,42"
+          Id="Package\Transform and Load Rating Data\Extract from Rating Staging"
+          TopLeft="38,33" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Transform and Load Rating Data\Facility Lookup"
+          TopLeft="330,118" />
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Transform and Load Rating Data\Date Lookup"
+          TopLeft="619,123" />
         <EdgeLayout
           Id="Package\Transform and Load Rating Data.Paths[OLE DB Source Output]"
-          TopLeft="241.5,91">
+          TopLeft="140,75">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46"
+              EndConnector="0,42"
               Start="0,0"
-              End="0,38.5">
+              End="0,34.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
+                    End="0,34.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4725,97 +4708,93 @@ where [refTable].[AlternateViolationID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="149,42"
-          Id="Package\Transform and Load Rating Data\Facility Lookup"
-          TopLeft="167,229" />
         <EdgeLayout
-          Id="Package\Transform and Load Rating Data.Paths[Lookup Match Output]"
-          TopLeft="242,179">
+          Id="Package\Transform and Load Rating Data.Paths[Lookup Match Output2]"
+          TopLeft="688,165">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,50"
+              EndConnector="-442.5,73"
               Start="0,0"
-              End="0,42.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,42.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,15.4453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="138,42"
-          Id="Package\Transform and Load Rating Data\Date Lookup"
-          TopLeft="174,311" />
-        <EdgeLayout
-          Id="Package\Transform and Load Rating Data.Paths[Lookup Match Output1]"
-          TopLeft="242.25,271">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,40"
-              Start="0,0"
-              End="0,32.5">
+              End="-442.5,65.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="-4,36.5" />
+                  <mssgle:LineSegment
+                    End="-438.5,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-438.5,36.5"
+                    Point2="-442.5,36.5"
+                    Point3="-442.5,40.5" />
+                  <mssgle:LineSegment
+                    End="-442.5,65.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.4453125,96.3827734375,11.609375"
+              BoundingBox="-269.44138671875,41.5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="257,42"
-          Id="Package\Transform and Load Rating Data\Derive Insert and Modified Date fields"
-          TopLeft="109,399" />
         <EdgeLayout
-          Id="Package\Transform and Load Rating Data.Paths[Lookup Match Output2]"
-          TopLeft="240.25,353">
+          Id="Package\Transform and Load Rating Data.Paths[Lookup Match Output1]"
+          TopLeft="479,141.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,46"
+              EndConnector="140,0"
               Start="0,0"
-              End="0,38.5">
+              End="132.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.5" />
+                    End="132.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,13.4453125,96.3827734375,11.609375"
+              BoundingBox="18.05861328125,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="155,42"
-          Id="Package\Transform and Load Rating Data\Load FactRating"
-          TopLeft="167,487" />
+        <EdgeLayout
+          Id="Package\Transform and Load Rating Data.Paths[Lookup Match Output]"
+          TopLeft="216,138.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114,0"
+              Start="0,0"
+              End="106.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="106.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="5.05861328125,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Transform and Load Rating Data.Paths[Derived Column Output]"
-          TopLeft="241,441">
+          TopLeft="249,280">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -4839,6 +4818,42 @@ where [refTable].[AlternateViolationID] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load Rating Data\Violation Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimViolation]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load Rating Data\Load FactRating">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Transform and Load Rating Data\Extract from Rating Staging">
     <Properties>
       <Property>
@@ -4852,35 +4867,12 @@ where [refTable].[AlternateViolationID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Rating Data\Violation Lookup">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimViolation]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Transform and Load Rating Data\Facility Lookup">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4890,7 +4882,7 @@ where [refTable].[AlternateViolationID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4903,7 +4895,7 @@ where [refTable].[AlternateViolationID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -4913,15 +4905,53 @@ where [refTable].[AlternateViolationID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transform and Load Violation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Transform and Load Violation\Load DimViolation"
+          TopLeft="418,77" />
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Transform and Load Violation\Extract from Violation Staging"
+          TopLeft="41,80" />
+        <EdgeLayout
+          Id="Package\Transform and Load Violation.Paths[OLE DB Source Output]"
+          TopLeft="260,99.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="158,0"
+              Start="0,0"
+              End="150.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="150.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Rating Data\Load FactRating">
+    design-time-name="Package\Transform and Load Violation\Extract from Violation Staging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

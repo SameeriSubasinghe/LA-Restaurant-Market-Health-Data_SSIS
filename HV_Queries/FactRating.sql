@@ -6,6 +6,8 @@ create table FactRating(
     ActivityDate int foreign key references DimDate(DateKey),
 	Fine int,
 	Score int,
-	InsertDate datetime, 
+	accm_txn_create_time datetime,
 	ModifiedDate datetime,
+	accm_txn_complete_time datetime,
+	txn_process_time_hours int
 )
